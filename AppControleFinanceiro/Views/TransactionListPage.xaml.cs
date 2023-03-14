@@ -11,4 +11,9 @@ public partial class TransactionListPage : ContentPage
 	{
 		App.Current.MainPage = new TransactionAddPage();
 	}
+
+    private void OnButtonClicked_To_TransactionEditPage(object sender, EventArgs e)
+    {
+		App.Current.MainPage = new TransactionEditPage();
+    }
 }
