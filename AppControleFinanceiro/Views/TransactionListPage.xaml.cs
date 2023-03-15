@@ -8,12 +8,12 @@ public partial class TransactionListPage : ContentPage
 	}
 
 	private void OnButtonClicked_To_TransactionAddPage(object sender, EventArgs e)
-	{
-		App.Current.MainPage = new TransactionAddPage();
+	{ 
+		Navigation.PushModalAsync(new TransactionAddPage());
 	}
 
     private void OnButtonClicked_To_TransactionEditPage(object sender, EventArgs e)
     {
-		App.Current.MainPage = new TransactionEditPage();
+		Navigation.PushModalAsync (new TransactionEditPage());
     }
 }

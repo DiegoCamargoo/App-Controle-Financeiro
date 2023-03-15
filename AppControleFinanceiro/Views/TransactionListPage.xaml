@@ -3,15 +3,36 @@
     x:Class="AppControleFinanceiro.Views.TransactionListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="TransactionListPage">
+    Title="Listagem"
+    NavigationPage.HasNavigationBar="False">
     <VerticalStackLayout>
-        <Label
+        <Grid Padding="15" ColumnDefinitions="50,*,auto">
+            <Label
+                BackgroundColor="White"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="S"
+                VerticalOptions="Center" />
+
+            <VerticalStackLayout Grid.Column="1">
+                <Label Text="Salário" />
+                <Label Text="10/03/2023" TextColor="#BABABA" />
+            </VerticalStackLayout>
+            <Label
+                Grid.Column="2"
+                Text="R$ 3.600,00"
+                TextColor="{StaticResource Tertiary}"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+        <Button
+            Clicked="OnButtonClicked_To_TransactionAddPage"
             HorizontalOptions="Center"
-            Text="Transaction List"
-            VerticalOptions="Center" />
-        
-        <Button Clicked="OnButtonClicked_To_TransactionAddPage" Text="+" />
-        
-        <Button Clicked="OnButtonClicked_To_TransactionEditPage" Text="Edit" />
+            Text="+" />
+        <Button
+            Clicked="OnButtonClicked_To_TransactionEditPage"
+            HorizontalOptions="Center"
+            Text="Edit" />
     </VerticalStackLayout>
 </ContentPage>
