@@ -9,7 +9,7 @@ public class Transaction
     public TransactionType Type { get; set; }
     public string Name { get; set; }
     public DateTimeOffset Date { get; set; }
-    public decimal value { get; set; }
+    public double Value { get; set; }
 
 }
 

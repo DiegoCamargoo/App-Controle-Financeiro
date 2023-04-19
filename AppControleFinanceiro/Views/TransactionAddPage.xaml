@@ -17,8 +17,8 @@
                     Grid.Column="0"
                     HorizontalOptions="Center"
                     Text="Novo"
-                    VerticalOptions="Center"
-                    TextColor="White" />
+                    TextColor="White"
+                    VerticalOptions="Center" />
 
                 <Image
                     Grid.Row="0"
@@ -27,27 +27,49 @@
                     Source="close.png"
                     WidthRequest="17">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <TapGestureRecognizer Tapped="TapGestureRecognizerTappedToClose" />
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
         </Border>
 
+        <Label
+            Margin="30,0"
+            x:Name="LabelError"
+            IsVisible="False"
+            TextColor="Red" />
+
         <Grid Margin="30,0" ColumnDefinitions="*,*">
 
-            <RadioButton Content="Receita" IsChecked="True" />
+            <RadioButton
+                x:Name="RadioIncome"
+                Content="Receita"
+                IsChecked="True" />
 
-            <RadioButton Content="Despesa" HorizontalOptions="End"  Grid.Column="1"/>
+            <RadioButton
+                x:Name="RadioExpense"
+                Grid.Column="1"
+                Content="Despesa"
+                HorizontalOptions="End" />
         </Grid>
 
-        <Entry Placeholder="Nome" Margin="15,0"/>
+        <Entry
+            x:Name="EntryName"
+            Margin="15,0"
+            Placeholder="Nome" />
 
-        <DatePicker  Margin="15,0"/>
-        
-        <Entry Placeholder="Valor" Margin="15,0"/>
+        <DatePicker x:Name="DatePickerDate" Margin="15,0" />
 
-        <Button Text="Salvar " Margin="15,0" HorizontalOptions="Center" />
+        <Entry
+            x:Name="EntryValue"
+            Margin="15,0"
+            Placeholder="Valor" />
 
+        <Button
+            Margin="15,0"
+            Clicked="OnButton_Clicked_Save"
+            HorizontalOptions="Center"
+            Text="Salvar " />
 
     </VerticalStackLayout>
 </ContentPage>
