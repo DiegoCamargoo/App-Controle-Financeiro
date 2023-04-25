@@ -1,6 +1,7 @@
 using AppControleFinanceiro.Models;
 using AppControleFinanceiro.Repositories;
 using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.Maui.Platform;
 using System.Text;
 using System.Transactions;
 using Transaction = AppControleFinanceiro.Models.Transaction;
@@ -34,7 +35,15 @@ public partial class TransactionEditPage : ContentPage
     private void TapGestureRecognizerTappedToClose
         (object sender, TappedEventArgs e)
     {
+
+       /* if (Platform.CurrentActivity.CurrentFocus != null)
+        {
+            Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+        }*/
         Navigation.PopModalAsync();
+
+        EntryName.IsEnabled = false;
+        EntryValue.IsEnabled = false;
 
     }
 
@@ -45,7 +54,15 @@ public partial class TransactionEditPage : ContentPage
 
         SaveTransactionInDatabase();
 
+        /* if (Platform.CurrentActivity.CurrentFocus != null)
+      {
+          Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+      }*/
+
         Navigation.PopModalAsync();
+
+        EntryName.IsEnabled = false;
+        EntryValue.IsEnabled = false;
 
         WeakReferenceMessenger.Default.Send(string.Empty);
     }
@@ -58,7 +75,7 @@ public partial class TransactionEditPage : ContentPage
             Type = RadioIncome.IsChecked ? TransactionType.Income : TransactionType.Expenses,
             Name = EntryName.Text,
             Date = DatePickerDate.Date,
-            Value = double.Parse(EntryValue.Text)
+            Value = Math.Abs(double.Parse(EntryValue.Text))
         };
 
         _repository.Update(transaction);

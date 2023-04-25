@@ -15,8 +15,7 @@
             <converters:TransactionValueColorConverter x:Key="TransactionValueColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <VerticalStackLayout>
-
+    <Grid RowDefinitions="*,auto">
         <CollectionView x:Name="CollectionViewTransactions">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -27,8 +26,8 @@
                         <Border
                             BackgroundColor="{Binding Name, Converter={StaticResource TransactionNameColorConverter}}"
                             HeightRequest="40"
-                            StrokeShape="RoundRectangle 20 "
                             Stroke="transparent"
+                            StrokeShape="RoundRectangle 20 "
                             WidthRequest="40">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureRecognizerTappedToDelete" />
@@ -53,10 +52,11 @@
 
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+
         </CollectionView>
-        <Border
+        <Border Grid.Row="1"
             Margin="10"
-            Padding="15"
+            Padding="20,15"
             BackgroundColor="{StaticResource Black}"
             StrokeShape="RoundRectangle 30"
             StrokeThickness="0">
@@ -109,5 +109,5 @@
 
             </Grid>
         </Border>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
